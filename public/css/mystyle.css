@@ -1,0 +1,41 @@
+/* My own custom styling */
+@font-face {
+    font-family: 'rajbold';
+    src: url('../fonts/Rajdhani-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'rajreg';
+    src: url('../fonts/Rajdhani-Regular.ttf');
+}
+
+* {
+    font-family: 'rajreg';
+}
+
+html, body {
+    height: 100%;
+}
+
+h1, h2, h3 {
+    font-family: 'rajbold';
+}
+
+.big {
+    font-size: 1.4em;
+    font-family: 'rajbold';
+}
+
+.content {
+    padding-top: 60px;
+}
+
+footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    padding: 5px 0;
+    background-color: #333;
+    text-align: center;
+    color: #ccc;
+}
