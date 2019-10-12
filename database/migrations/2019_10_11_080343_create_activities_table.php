@@ -15,7 +15,13 @@ class CreateActivitiesTable extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('semester_id')->unsigned();
+            $table->string('title');
+            $table->string('description');
+            $table->timestamp('starts')->nullable();
+            $table->timestamp('ends')->nullable();
             $table->timestamps();
+            $table->foreign('semester_id')->references('id')->on('semesters');
         });
     }
 

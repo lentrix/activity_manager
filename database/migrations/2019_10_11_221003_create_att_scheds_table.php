@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSemestersTable extends Migration
+class CreateAttSchedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateSemestersTable extends Migration
      */
     public function up()
     {
-        Schema::create('semesters', function (Blueprint $table) {
+        Schema::create('att_scheds', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('active')->default(0);
-            $table->string('accronym');
-            $table->string('semester');
-            $table->string('prefix');
+            $table->bigInteger('attendance_id')->unsigned();
+            $table->string('label');
+            $table->timestamp('open')->nullable();
+            $table->timestamp('close')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateSemestersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('semesters');
+        Schema::dropIfExists('att_scheds');
     }
 }

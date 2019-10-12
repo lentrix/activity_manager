@@ -19,5 +19,12 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/home', 'SiteController@home')->name('home');
 
     Route::get('/activities', 'ActivityController@index');
+
+    Route::get('/semesters', 'SemesterController@index');
+    Route::post('/semesters', 'SemesterController@store');
+    Route::get('/semesters/create', 'SemesterController@create');
+    Route::get('/semesters/{semester}', 'SemesterController@edit');
+    Route::patch('/semesters/{semester}', 'SemesterController@update');
+    Route::get('/semesters/{semester}/activate', 'SemesterController@activate');
 });
 
