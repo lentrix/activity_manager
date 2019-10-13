@@ -2,13 +2,16 @@
 
 @section('content')
 
-<a href="{{url('/semesters/create')}}"
-        class="btn btn-primary pull-right">
-    <i class="glyphicon glyphicon-plus"></i>
-    Add Semester
-</a>
 
-<h1>Semesters</h1>
+
+<h1>
+    <a href="{{url('/semesters/create')}}"
+            class="btn btn-primary pull-right">
+    <i class="glyphicon glyphicon-plus"></i>
+        Add Semester
+    </a>
+    Semesters
+</h1>
 
 <ul class="breadcrumb">
     <li><a href="{{url('/')}}">Home</a></li>

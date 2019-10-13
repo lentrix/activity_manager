@@ -15,11 +15,12 @@ class CreateAttSchedsTable extends Migration
     {
         Schema::create('att_scheds', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('attendance_id')->unsigned();
+            $table->bigInteger('activity_id')->unsigned();
             $table->string('label');
             $table->timestamp('open')->nullable();
             $table->timestamp('close')->nullable();
             $table->timestamps();
+            $table->foreign('activity_id')->references('id')->on('activities');
         });
     }
 

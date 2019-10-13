@@ -28,6 +28,9 @@ class SemesterController extends Controller
             'semester' => $request['semester']
         ]);
 
+        \App\Log::add("Created Semester with #ID $sem->id ($sem->accronym).");
+
+
         return redirect('/semesters')->with('Info',"Semester $sem->accronym has been created.");
     }
 
@@ -43,6 +46,8 @@ class SemesterController extends Controller
         ]);
 
         $semester->update($request->all());
+
+        \App\Log::add("Updated Semester with #ID $semester->id ($semester->accronym).");
 
         return redirect('/semesters')->with('Info',"Semester $semester->accronym has been updated.");
     }
