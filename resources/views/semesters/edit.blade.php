@@ -5,9 +5,9 @@
 <h1>Edit Semester</h1>
 
 <ul class="breadcrumb">
-    <li><a href="{{url('/')}}">Home</a></li>
-    <li><a href="{{url('/semesters')}}">Semesters</a></li>
-    <li class="active">Edit Semester - {{$semester->accronym}}</li>
+    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/semesters')}}">Semesters</a></li>
+    <li class=" breadcrumb-item active">Edit Semester - {{$semester->accronym}}</li>
 </ul>
 
 <div class="row">

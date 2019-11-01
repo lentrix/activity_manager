@@ -1,37 +1,36 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+        <a class="navbar-brand" href="#">{{env('APP_NAME')}}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="{{url('/')}}">{{env('APP_NAME')}}</a>
-        </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li><a href="{{url('/')}}">Home</a></li>
-            <li><a href="{{url('/students')}}">Students</a></li>
-            <li><a href="{{url('/activities')}}">Activities</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reports <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="/reports/individual">Individual Summary</a></li>
-                    <li><a href="/reports/activity">Activity Summary</a></li>
-                    <li><a href="/reports/semestral">Semestral Report</a></li>
-                    <li class="divider"></li>
-                    <li><a href="/reports/logs">Activity Log</a></li>
-                </ul>
-            </li>
-            <li><a href="{{url('/semesters')}}">Semesters</a></li>
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-            <li><p class="navbar-text">Username |</p></li>
-            <li><a href="{{url('/logout')}}">[Logout]</a></li>
-        </ul>
+        @if(!auth()->guest())
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url('/')}}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/activities')}}">Activities</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/students')}}">Students</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/semesters')}}">Semesters</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="navbar-text">
+                    User: {{auth()->user()->name}}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/logout')}}">[Logout]</a>
+                </li>
+            </ul>
         </div>
+        @endif
     </div>
+
 </nav>

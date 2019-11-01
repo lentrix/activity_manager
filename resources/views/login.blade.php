@@ -3,11 +3,14 @@
 @section('content')
 
 <div class="row">
-    <div class="col-lg-6 col-lg-offset-3" style="margin-top: 20px;">
-        <h1>User Login</h1>
+    <div class="col-lg-6 offset-lg-3" style="margin-top: 20px;">
+
         @include('messages')
-        <div class="panel panel-primary">
-            <div class="panel-body">
+        <div class="card text-gray bg-light">
+            <div class="card-header">
+                <h1>User Login</h1>
+            </div>
+            <div class="card-body">
 
                 {!! Form::open(['url'=>'/login', 'method'=>'post']) !!}
 
@@ -22,7 +25,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-primary btn-lg pull-right">
+                    <button class="btn btn-primary btn-lg float-right">
                         <i class="glyphicon glyphicon-ok-sign"></i> Login
                     </button>
                 </div>

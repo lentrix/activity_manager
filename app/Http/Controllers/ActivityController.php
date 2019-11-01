@@ -26,16 +26,20 @@ class ActivityController extends Controller
         $this->validate($request, [
             'title'=>'required',
             'description'=>'required',
+            'date' => 'required',
             'starts'=>'required',
             'ends'=>'required',
         ]);
 
+        $start = $request['date'] . " " . $request['starts'] . ":00";
+        $end = $request['date'] . " " . $request['ends'] . ":00";
+
         $act = Activity::create([
             'title' => $request['title'],
             'description' => $request['description'],
-            'starts' => $request['starts'],
-            'ends' => $request['ends'],
-            'semester_id' => Semester::getActive()->id
+            'starts' => $start,
+            'ends' => $end,
+            'semester_id' => 1 //Semester::getActive()->id
         ]);
 
         \App\Log::add("Created Activity with #ID $act->id ($act->title).");
@@ -51,15 +55,19 @@ class ActivityController extends Controller
         $this->validate($request, [
             'title'=>'required',
             'description'=>'required',
+            'date' => 'required',
             'starts'=>'required',
             'ends'=>'required',
         ]);
 
+        $start = $request['date'] . " " . $request['starts'] . ":00";
+        $end = $request['date'] . " " . $request['ends'] . ":00";
+
         $activity->update([
             'title' => $request['title'],
             'description' => $request['description'],
-            'starts' => $request['starts'],
-            'ends' => $request['ends'],
+            'starts' => $start,
+            'ends' => $end,
         ]);
 
         \App\Log::add("Updated Activity with #ID $activity->id ($activity->title).");
@@ -71,8 +79,8 @@ class ActivityController extends Controller
         AttSched::create([
             'activity_id' => $activity->id,
             'label' => $request['label'],
-            'open' => $request['open'],
-            'close' => $request['close']
+            'open' => date('Y-m-d', $activity->starts->timestamp). " " . $request['open'],
+            'close' => date('Y-m-d', $activity->starts->timestamp). " " . $request['close']
         ]);
 
         return redirect()->back();

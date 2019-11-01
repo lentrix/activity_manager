@@ -18,7 +18,7 @@ class ActivityNotDueMiddleware
         $actId = $request->route('activity');
         $activity = \App\Activity::find($actId)->first();
 
-        if($activity && $activity->starts->gte(\Carbon\Carbon::now()))
+        if($activity && $activity->starts->lt(\Carbon\Carbon::now()))
             return $next($request);
         else
             return redirect()->back()->with('Error',"The activity $activity->title has already past.");

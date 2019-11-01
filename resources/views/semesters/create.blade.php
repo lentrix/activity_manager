@@ -5,9 +5,9 @@
 <h1>Create Semester</h1>
 
 <ul class="breadcrumb">
-    <li><a href="{{url('/')}}">Home</a></li>
-    <li><a href="{{url('/semesters')}}">Semesters</a></li>
-    <li class="active">Create Semester</li>
+    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/semesters')}}">Semesters</a></li>
+    <li class="breadcrumb-item active">Create Semester</li>
 </ul>
 
 <div class="row">

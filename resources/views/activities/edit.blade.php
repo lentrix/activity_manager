@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="modal" id="modal1">
+<div class="modal fade" id="modal1">
     <div class="modal-dialog">
         <div class="modal-content">
             {!! Form::open(['url'=>"/activities/$activity->id/add-checking", "method"=>'post']) !!}
@@ -19,16 +19,20 @@
                 </div>
                 <div class="form-group">
                     {{Form::label('open','Open Time')}}
-                    {{Form::text('open',null,['class'=>'form-control'])}}
+                    {{Form::time('open',null,['class'=>'form-control'])}}
                 </div>
                 <div class="form-group">
                     {{Form::label('close','Close Time')}}
-                    {{Form::text('close',null,['class'=>'form-control'])}}
+                    {{Form::time('close',null,['class'=>'form-control'])}}
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                    <i class="fa fa-times"></i> Close
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-plus"></i> Save changes
+                </button>
             </div>
             {!! Form::close() !!}
         </div>
@@ -38,9 +42,9 @@
 <h1>Edit Activity</h1>
 
 <ul class="breadcrumb">
-    <li><a href="{{url('/home')}}">Home</a></li>
-    <li><a href="{{url('/activities')}}">Activities</a></li>
-    <li class="active">Edit Activity | {{$activity->title}}</li>
+    <li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/activities')}}">Activities</a></li>
+    <li class="breadcrumb-item active">Edit Activity | {{$activity->title}}</li>
 </ul>
 
 @include('messages')
@@ -53,7 +57,7 @@
 
         <div class="form-group">
             <button class="btn btn-primary pull-right">
-                <i class="glyphicon glyphicon-edit"></i>
+                <i class="fa fa-edit"></i>
                 Update Activity
             </button>
         </div>
@@ -63,10 +67,10 @@
     <div class="col-lg-6">
 
         <h3>
-            <button class="btn btn-primary btn-sm pull-right"
+            <button class="btn btn-primary btn-sm float-right"
                     title="Add checking schedule"
                     data-toggle="modal" data-target="#modal1">
-                <i class="glyphicon glyphicon-plus"></i>
+                <i class="fa fa-plus"></i>
             </button>
             Checking Schedules
         </h3>
@@ -87,8 +91,8 @@
                     <td>{{$attSched->close}}</td>
                     <td>
                         <a href='{{url("/activities/att-sched/$attSched->id/delete")}}'
-                                    class="btn btn-danger btn-xs">
-                            <i class="glyphicon glyphicon-remove"></i>
+                                    class="btn btn-danger btn-sm">
+                            <i class="fa fa-times"></i>
                         </a>
                     </td>
                 </tr>

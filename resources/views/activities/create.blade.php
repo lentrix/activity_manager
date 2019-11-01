@@ -5,9 +5,9 @@
 <h1>Create Activity</h1>
 
 <ul class="breadcrumb">
-    <li><a href="{{url('/home')}}">Home</a></li>
-    <li><a href="{{url('/activities')}}">Activities</a></li>
-    <li class="active">Create Activity</li>
+    <li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/activities')}}">Activities</a></li>
+    <li class="breadcrumb-item active">Create Activity</li>
 </ul>
 
 <div class="row">
@@ -18,7 +18,7 @@
 
         <div class="form-group">
             <button class="btn btn-primary pull-right" type="submit">
-                <i class="glyphicon glyphicon-ok"></i>
+                <i class="fa fa-plus"></i>
                 Create Activity
             </button>
         </div>

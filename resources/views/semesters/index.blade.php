@@ -6,16 +6,16 @@
 
 <h1>
     <a href="{{url('/semesters/create')}}"
-            class="btn btn-primary pull-right">
-    <i class="glyphicon glyphicon-plus"></i>
+            class="btn btn-primary float-right">
+    <i class="fa fa-plus"></i>
         Add Semester
     </a>
     Semesters
 </h1>
 
 <ul class="breadcrumb">
-    <li><a href="{{url('/')}}">Home</a></li>
-    <li class="active">Semesters</li>
+    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+    <li class="breadcrumb-item active">Semesters</li>
 </ul>
 
 @include('messages')
@@ -38,14 +38,14 @@
             <td>{{$sem->semester}}</td>
             <td>
                 @if($sem->active)
-                    <i class="glyphicon glyphicon-ok"></i>
+                    <i class="fa fa-check"></i>
                 @else
-                    <i class="glyphicon glyphicon-remove"></i>
+                    &nbsp;
                 @endif
             </td>
             <td>
-                <a href='{{url("/semesters/$sem->id")}}' class="btn btn-success btn-xs" title="Edit Semester">
-                    <i class="glyphicon glyphicon-edit"></i>
+                <a href='{{url("/semesters/$sem->id")}}' class="btn btn-success btn-sm" title="Edit Semester">
+                    <i class="fa fa-edit"></i>
                 </a>
             </td>
         </tr>

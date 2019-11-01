@@ -5,16 +5,16 @@
 
 
 <h1>
-    <a href='{{url("/activities/create")}}' class="btn btn-primary pull-right">
-        <i class="glyphicon glyphicon-ok"></i>
+    <a href='{{url("/activities/create")}}' class="btn btn-primary float-right">
+        <i class="fa fa-plus"></i>
         Create Activity
     </a>
     Recent Activities
 </h1>
 
 <ul class="breadcrumb">
-    <li><a href="{{url('/')}}">Home</a></li>
-    <li class="active">Activities</li>
+    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+    <li class="breadcrumb-item active">Activities</li>
 </ul>
 
 @include('messages')
@@ -36,11 +36,11 @@
         <tr>
             <td>{{$act->title}}</td>
             <td>{{$act->description}}</td>
-            <td>{{$act->starts}}</td>
-            <td>{{$act->ends}}</td>
+            <td>{{$act->starts->toRfc7231String()}}</td>
+            <td>{{$act->ends->toRfc7231String()}}</td>
             <td>
-                <a href='{{url("/activities/$act->id")}}' class="btn btn-success btn-xs" title="Edit Activity">
-                    <i class="glyphicon glyphicon-edit"></i>
+                <a href='{{url("/activities/$act->id")}}' class="btn btn-success btn-sm" title="Edit Activity">
+                    <i class="fa fa-edit"></i>
                 </a>
             </td>
         </tr>

@@ -9,12 +9,17 @@
 </div>
 
 <div class="form-group">
+    {{Form::label('date')}}
+    {{Form::date('date',isset($activity) ? date('Y-m-d', $activity->starts->timestamp):null, ['class'=>'form-control'])}}
+</div>
+
+<div class="form-group">
     {{Form::label('starts')}}
-    {{Form::text('starts',null,['class'=>'form-control'])}}
+    {{Form::time('starts',isset($activity) ? date('H:i',$activity->starts->timestamp) : null,['class'=>'form-control'])}}
 </div>
 
 <div class="form-group">
     {{Form::label('ends')}}
-    {{Form::text('ends',null,['class'=>'form-control'])}}
+    {{Form::time('ends',isset($activity) ? date('H:i',$activity->ends->timestamp) : null,['class'=>'form-control'])}}
 </div>
 
