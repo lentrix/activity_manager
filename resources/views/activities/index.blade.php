@@ -9,7 +9,7 @@
         <i class="fa fa-plus"></i>
         Create Activity
     </a>
-    Recent Activities
+    Recent Activities | {{$semester->prefix}}
 </h1>
 
 <ul class="breadcrumb">

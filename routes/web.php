@@ -25,7 +25,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::patch('/activities/{activity}', 'ActivityController@update')->middleware('pastdue');
     Route::delete('/activities/{activity}', 'ActivityController@delete')->middleware('pastdue');
     Route::post('/activities/{activity}/add-checking', 'ActivityController@addChecking')->middleware('pastdue');
-    Route::get('/activities/att-sched/{attSched}/delete', 'ActivityController@removeChecking');
+    Route::post('/activities/att-sched/delete', 'ActivityController@removeChecking');
 
     Route::get('/semesters', 'SemesterController@index');
     Route::post('/semesters', 'SemesterController@store');

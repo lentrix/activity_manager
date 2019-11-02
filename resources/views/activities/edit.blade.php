@@ -2,6 +2,28 @@
 
 @section('content')
 
+<div class="modal fade" id="modaldelete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            {{Form::open(['url'=>'/activities/att-sched/delete', 'method'=>'post'])}}
+            <div class="modal-body">
+                <p>Are you sure you want to delete this checking schedule?</p>
+                <p id="checkingSchedule"></p>
+                <input type="hidden" name="sched_id" id="sched_id">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                    <i class="fa fa-times"></i> Close
+                </button>
+                <button type="submit" class="btn btn-danger">
+                    <i class="fa fa-ban"></i> Delete
+                </button>
+            </div>
+            {{Form::close()}}
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="modal1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -90,10 +112,19 @@
                     <td>{{$attSched->open}}</td>
                     <td>{{$attSched->close}}</td>
                     <td>
-                        <a href='{{url("/activities/att-sched/$attSched->id/delete")}}'
+                        {{-- <a href='{{url("/activities/att-sched/$attSched->id/delete")}}'
                                     class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i>
-                        </a>
+                        </a> --}}
+
+                        <button class="btn btn-danger btn-sm delete-sched"
+                                title="Delete checking schedule"
+                                data-toggle="modal"
+                                data-target="#modaldelete"
+                                data-content="{{$attSched->label}}"
+                                data-schedId="{{$attSched->id}}">
+                            <i class="fa fa-ban"></i>
+                        </button>
                     </td>
                 </tr>
                 @endforeach
@@ -101,5 +132,18 @@
         </table>
     </div>
 </div>
+
+@stop
+
+@section('scripts')
+
+<script>
+$(document).ready(function(){
+    $(".delete-sched").click(function(){
+        $("#sched_id").val($(this).attr('data-schedId'));
+        $("#checkingSchedule").text($(this).attr('data-content'));
+    })
+})
+</script>
 
 @stop

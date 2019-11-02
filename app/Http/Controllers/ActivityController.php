@@ -11,8 +11,12 @@ use App\AttSched;
 class ActivityController extends Controller
 {
     public function index() {
-        $activities = Activity::orderBy('id','desc')->get();
-        return view('activities.index',compact('activities'));
+        $semester = Semester::getActive();
+        $activities = Activity::where('semester_id', $semester->id)->orderBy('id','desc')->get();
+        return view('activities.index',[
+            'activities' => $activities,
+            'semester' => $semester
+        ]);
     }
 
     public function create() {
@@ -39,7 +43,7 @@ class ActivityController extends Controller
             'description' => $request['description'],
             'starts' => $start,
             'ends' => $end,
-            'semester_id' => 1 //Semester::getActive()->id
+            'semester_id' => Semester::getActive()->id
         ]);
 
         \App\Log::add("Created Activity with #ID $act->id ($act->title).");
@@ -86,8 +90,8 @@ class ActivityController extends Controller
         return redirect()->back();
     }
 
-    public function removeChecking(AttSched $attSched) {
-        $activity_id = $attSched->activity_id;
+    public function removeChecking(Request $request) {
+        $attSched = AttSched::find($request['sched_id']);
         $attSched->delete();
         return redirect()->back()->with('Error', 'Removed a checking Schedule');
     }
