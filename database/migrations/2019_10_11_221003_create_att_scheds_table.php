@@ -19,6 +19,7 @@ class CreateAttSchedsTable extends Migration
             $table->string('label');
             $table->timestamp('open')->nullable();
             $table->timestamp('close')->nullable();
+            $table->decimal('fine',10,2)->unsigned();
             $table->timestamps();
             $table->foreign('activity_id')->references('id')->on('activities');
         });

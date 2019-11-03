@@ -48,7 +48,7 @@ class ActivityController extends Controller
 
         \App\Log::add("Created Activity with #ID $act->id ($act->title).");
 
-        return redirect('/activities')->with('Info',"Activity $act->title has been created.");
+        return redirect("/activities/$act->id")->with('Info',"Activity $act->title has been created.");
     }
 
     public function edit(Activity $activity) {
@@ -83,6 +83,7 @@ class ActivityController extends Controller
         AttSched::create([
             'activity_id' => $activity->id,
             'label' => $request['label'],
+            'fine' => $request['fine'],
             'open' => date('Y-m-d', $activity->starts->timestamp). " " . $request['open'],
             'close' => date('Y-m-d', $activity->starts->timestamp). " " . $request['close']
         ]);

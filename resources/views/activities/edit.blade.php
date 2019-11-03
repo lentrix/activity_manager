@@ -16,7 +16,7 @@
                     <i class="fa fa-times"></i> Close
                 </button>
                 <button type="submit" class="btn btn-danger">
-                    <i class="fa fa-ban"></i> Delete
+                    <i class="fa fa-trash-alt"></i> Delete
                 </button>
             </div>
             {{Form::close()}}
@@ -37,15 +37,19 @@
             <div class="modal-body">
                 <div class="form-group">
                     {{Form::label('label')}}
-                    {{Form::text('label',null,['class'=>'form-control'])}}
+                    {{Form::text('label',null,['class'=>'form-control','required'])}}
+                </div>
+                <div class="form-group">
+                    {{Form::label('fine')}}
+                    {{Form::text('fine',null,['class'=>'form-control','required'])}}
                 </div>
                 <div class="form-group">
                     {{Form::label('open','Open Time')}}
-                    {{Form::time('open',null,['class'=>'form-control'])}}
+                    {{Form::time('open',null,['class'=>'form-control','required'])}}
                 </div>
                 <div class="form-group">
                     {{Form::label('close','Close Time')}}
-                    {{Form::time('close',null,['class'=>'form-control'])}}
+                    {{Form::time('close',null,['class'=>'form-control','required'])}}
                 </div>
             </div>
             <div class="modal-footer">
@@ -123,7 +127,7 @@
                                 data-target="#modaldelete"
                                 data-content="{{$attSched->label}}"
                                 data-schedId="{{$attSched->id}}">
-                            <i class="fa fa-ban"></i>
+                            <i class="fa fa-trash-alt"></i>
                         </button>
                     </td>
                 </tr>

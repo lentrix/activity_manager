@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Activity;
 
 class ActivityNotDueMiddleware
 {
@@ -15,10 +16,9 @@ class ActivityNotDueMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $actId = $request->route('activity');
-        $activity = \App\Activity::find($actId)->first();
+        $activity = $request->route('activity');
 
-        if($activity && $activity->starts->lt(\Carbon\Carbon::now()))
+        if($activity->starts->gte(\Carbon\Carbon::now()))
             return $next($request);
         else
             return redirect()->back()->with('Error',"The activity $activity->title has already past.");
