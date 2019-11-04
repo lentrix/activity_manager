@@ -18,6 +18,12 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/logout', 'SiteController@logout');
     Route::get('/home', 'SiteController@home')->name('home');
 
+    Route::get('/students/{student}', 'StudentController@view');
+    Route::get('/students', 'StudentController@index');
+    Route::post('/students', 'StudentController@search');
+    Route::post('/students/import', 'StudentController@import');
+    Route::get('/students/qrcode/{student}', 'StudentController@qrcode');
+
     Route::get('/activities', 'ActivityController@index');
     Route::post('/activities', 'ActivityController@store');
     Route::get('/activities/create', 'ActivityController@create');
@@ -34,5 +40,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::patch('/semesters/{semester}', 'SemesterController@update');
     Route::get('/semesters/{semester}/activate', 'SemesterController@activate');
 
+    Route::get('/qrcodes', 'QrCodeController@index');
+    Route::post('/qrcodes', 'QrCodeController@index');
 });
 

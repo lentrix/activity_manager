@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActivitiesTable extends Migration
+class CreateStudSemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateActivitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('activities', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('stud_sems', function (Blueprint $table) {
+            $table->integer('student_id')->unsigned();
             $table->integer('semester_id')->unsigned();
-            $table->string('title');
-            $table->string('description');
-            $table->timestamp('starts')->nullable();
-            $table->timestamp('ends')->nullable();
-            $table->timestamps();
+            $table->foreign('student_id')->references('id')->on('students');
             $table->foreign('semester_id')->references('id')->on('semesters');
+
+            $table->primary(['student_id','semester_id']);
+
+            $table->timestamps();
         });
     }
 
@@ -32,6 +32,6 @@ class CreateActivitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activities');
+        Schema::dropIfExists('stud_sems');
     }
 }

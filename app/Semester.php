@@ -11,4 +11,8 @@ class Semester extends Model
     public static function getActive() {
         return static::where('active',1)->first();
     }
+
+    public function studSems() {
+        return $this->hasMany('App\StudSem');
+    }
 }

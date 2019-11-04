@@ -20,6 +20,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/semesters')}}">Semesters</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/qrcodes')}}">QRCode</a>
+                </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="navbar-text">

@@ -13,7 +13,13 @@ class LoginController extends Controller
             return response()->json(['error'=>'Invalid username and/or password.'], 401);
         }
 
-        return response()->json(['token'=>$token]);
+        $user = auth()->user();
+
+        return response()->json([
+            'token'=>$token,
+            'username' => $user->username,
+            'name' => $user->name,
+        ]);
     }
 
     public function profile(Request $request) {

@@ -18,7 +18,7 @@
         @yield('content')
     </div>
 
-    <footer class="py-2 bg-white text-gray">
+    <footer class="py-2 bg-white text-gray no-print">
         Copyright &copy; 2019. Benjie B. Lenteria <br>
         All rights reserved.
     </footer>
