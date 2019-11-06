@@ -25,4 +25,10 @@ class Student extends Model
             ]);
         }
     }
+
+    public function getCurrentAccountAttribute() {
+        return  StudSem::where('student_id', $this->id)
+                    ->where('semester_id', Semester::getActive()->id)
+                    ->first();
+    }
 }

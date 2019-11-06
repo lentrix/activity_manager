@@ -76,7 +76,7 @@
 @include('messages')
 
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-4">
         {!! Form::model($activity, ['url'=>"/activities/$activity->id", 'method'=>'patch']) !!}
 
         @include('activities._fields')
@@ -90,7 +90,7 @@
 
         {!! Form::close() !!}
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-8">
 
         <h3>
             <button class="btn btn-primary btn-sm float-right"
@@ -106,6 +106,7 @@
                     <th>Label</th>
                     <th>Open Time</th>
                     <th>Close Time</th>
+                    <th>Fine</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -115,6 +116,7 @@
                     <td>{{$attSched->label}}</td>
                     <td>{{$attSched->open}}</td>
                     <td>{{$attSched->close}}</td>
+                    <td>{{number_format($attSched->fine,2)}}</td>
                     <td>
                         {{-- <a href='{{url("/activities/att-sched/$attSched->id/delete")}}'
                                     class="btn btn-danger btn-sm">

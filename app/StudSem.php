@@ -17,6 +17,10 @@ class StudSem extends Model
         return $this->belongsTo('App\Student');
     }
 
+    public function attChecks() {
+        return $this->hasMany('App\AttCheck');
+    }
+
     public static function add($data) {
         $semId = Semester::getActive()->id;
 
@@ -30,5 +34,25 @@ class StudSem extends Model
                 'student_id' => $data['idnum']
             ]);
         }
+    }
+
+    public function present() {
+        return AttSched::whereHas('attChecks', function($query) {
+            return $query->where('stud_sem_id', $this->id)
+                        ->where('valid', 1);
+        })->with('activity')->get();
+    }
+
+    public function discard() {
+        return AttSched::whereHas('attChecks', function($query) {
+            return $query->where('stud_sem_id', $this->id)
+                        ->where('valid', 0);
+        })->with('activity')->get();
+    }
+
+    public function absent() {
+        return AttSched::whereDoesntHave('attChecks', function($query) {
+            return $query->where('stud_sem_id', $this->id);
+        })->with('activity')->get();
     }
 }

@@ -30,5 +30,7 @@ Route::group(['middleware'=>'cors'], function(){
 
     Route::get('/activities','Api\ActivitiesController@activities');
     Route::get('/attscheds/{activity_id}', 'Api\ActivitiesController@attScheds');
+
+    Route::post('/submit', 'Api\ActivitiesController@submit');
 });
 

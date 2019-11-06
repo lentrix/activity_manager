@@ -22,7 +22,7 @@
                     <input type="radio" name="criteria" id="id" value="id">
                     <label for="id">Student ID &nbsp;</label>
 
-                    <input type="radio" name="criteria" id="lname" value="lname">
+                    <input type="radio" name="criteria" id="lname" value="lname" checked="checked">
                     <label for="lname">Last Name &nbsp;</label>
 
                     <input type="radio" name="criteria" id="fname" value="fname">

@@ -14,12 +14,11 @@ class CreateStudSemsTable extends Migration
     public function up()
     {
         Schema::create('stud_sems', function (Blueprint $table) {
+            $table->bigIncrements("id");
             $table->integer('student_id')->unsigned();
             $table->integer('semester_id')->unsigned();
             $table->foreign('student_id')->references('id')->on('students');
             $table->foreign('semester_id')->references('id')->on('semesters');
-
-            $table->primary(['student_id','semester_id']);
 
             $table->timestamps();
         });

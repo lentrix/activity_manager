@@ -16,6 +16,9 @@ class StudentController extends Controller
     }
 
     public function search(Request $request) {
+        $this->validate($request, [
+            'criteria' => 'required'
+        ]);
         if($request['criteria']=="id") {
             $students[] = Student::find($request['key']);
         }else {

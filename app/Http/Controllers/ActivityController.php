@@ -12,6 +12,11 @@ class ActivityController extends Controller
 {
     public function index() {
         $semester = Semester::getActive();
+
+        if($semester==null) {
+            return redirect('/semesters')->with('Error','Activities cannot be opened because there is no active semester.');
+        }
+
         $activities = Activity::where('semester_id', $semester->id)->orderBy('id','desc')->get();
         return view('activities.index',[
             'activities' => $activities,
