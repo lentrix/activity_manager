@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AttCheck extends Model
 {
+    protected $dates = ['check_time'];
     protected $fillable = ['stud_sem_id', 'att_sched_id', 'check_time','user_id','valid'];
 
     public static function massInsert($data, $user) {

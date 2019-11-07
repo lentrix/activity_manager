@@ -36,8 +36,8 @@
         <tr>
             <td>{{$act->title}}</td>
             <td>{{$act->description}}</td>
-            <td>{{$act->starts->toRfc7231String()}}</td>
-            <td>{{$act->ends->toRfc7231String()}}</td>
+            <td>{{$act->starts->format('D, M d, Y g:i A')}}</td>
+            <td>{{$act->ends->format('D, M d, Y g:i A')}}</td>
             <td>
                 <a href='{{url("/activities/$act->id")}}' class="btn btn-success btn-sm" title="Edit Activity">
                     <i class="fa fa-edit"></i>

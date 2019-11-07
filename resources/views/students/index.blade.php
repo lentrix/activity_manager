@@ -2,6 +2,7 @@
 
 @section('content')
 
+<?php $stats = \App\StudSem::stats(); ?>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="searchmodal">
     <div class="modal-dialog" role="document">
@@ -95,27 +96,27 @@
                 <table class="table table-bordered table-sm">
                     <tr>
                         <th>Total Population</th>
-                        <td>0</td>
+                        <td>{{$stats['total']}}</td>
                     </tr>
                     <tr>
-                        <th>Male Population</th>
-                        <td>0</td>
+                        <th>First Year</th>
+                        <td>{{$stats['1']}}</td>
                     </tr>
                     <tr>
-                        <th>Female Population</th>
-                        <td>0</td>
+                        <th>Second Year</th>
+                        <td>{{$stats['2']}}</td>
                     </tr>
                     <tr>
-                        <th>Freshmen/Transferees</th>
-                        <td>0</td>
+                        <th>Third Year</th>
+                        <td>{{$stats['3']}}</td>
                     </tr>
                     <tr>
-                        <th>Graduate School</th>
-                        <td>0</td>
+                        <th>Fourth Year</th>
+                        <td>{{$stats['4']}}</td>
                     </tr>
                     <tr>
-                        <th>Total Population</th>
-                        <td>0</td>
+                        <th>Qualifying</th>
+                        <td>{{$stats['Q']}}</td>
                     </tr>
                 </table>
 

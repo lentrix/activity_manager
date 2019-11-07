@@ -38,7 +38,7 @@
     <div class="col-lg-9">
         <h3>Summary of Attendance</h3>
         <h4>Present In..</h4>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-sm">
             <thead>
                 <tr>
                     <th>Activity</th>
@@ -53,7 +53,7 @@
                 <tr>
                     <td>{{$attSched->activity->title}}</td>
                     <td>{{$attSched->label}}</td>
-                    <td>{{$attCheck->check_time}}</td>
+                    <td>{{$attCheck->check_time->format('D, M d, Y g:i A')}}</td>
                     <td>{{$attCheck->user->username}}</td>
                 </tr>
 
@@ -62,7 +62,7 @@
         </table>
 
         <h4>Discarded Attendances</h4>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-sm">
             <thead>
                 <tr>
                     <th>Activity</th>
@@ -79,7 +79,7 @@
                 <tr>
                     <td>{{$attSched->activity->title}}</td>
                     <td>{{$attSched->label}}</td>
-                    <td>{{$attCheck->check_time}}</td>
+                    <td>{{$attCheck->check_time->format('D, M d, Y g:i A')}}</td>
                     <td>{{$attCheck->user->username}}</td>
                     <td>{{$attSched->fine}}</td>
                 </tr>
@@ -89,11 +89,12 @@
         </table>
 
         <h4>Absent In..</h4>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-sm">
             <thead>
                 <tr>
                     <th>Activity</th>
                     <th>Attendances</th>
+                    <th>Open Time</th>
                     <th>Fine</th>
                 </tr>
             </thead>
@@ -103,6 +104,7 @@
                 <tr>
                     <td>{{$attSched->activity->title}}</td>
                     <td>{{$attSched->label}}</td>
+                    <td>{{$attSched->open->format('D, M d, Y g:i A')}}</td>
                     <td class="right">{{$attSched->fine}}</td>
                 </tr>
                     <?php $total += $attSched->fine; ?>

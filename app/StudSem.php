@@ -53,6 +53,37 @@ class StudSem extends Model
     public function absent() {
         return AttSched::whereDoesntHave('attChecks', function($query) {
             return $query->where('stud_sem_id', $this->id);
-        })->with('activity')->get();
+        })->where('open','<', \Carbon\Carbon::now())
+        ->with('activity')->get();
+    }
+
+    public static function stats() {
+        $stats = [];
+
+        $stats['total'] = static::where('semester_id', Semester::getActive()->id)->count();
+        $levels = ['1','2','3','4','Q'];
+
+        $stats['1'] = static::where('semester_id', Semester::getActive()->id)
+                        ->whereHas('student', function($query){
+                            return $query->where('year', '1');
+                        })->count();
+        $stats['2'] = static::where('semester_id', Semester::getActive()->id)
+                        ->whereHas('student', function($query){
+                            return $query->where('year', '2');
+                        })->count();
+        $stats['3'] = static::where('semester_id', Semester::getActive()->id)
+                        ->whereHas('student', function($query){
+                            return $query->where('year', '3');
+                        })->count();
+        $stats['4'] = static::where('semester_id', Semester::getActive()->id)
+                        ->whereHas('student', function($query){
+                            return $query->where('year', '4');
+                        })->count();
+        $stats['Q'] = static::where('semester_id', Semester::getActive()->id)
+                        ->whereHas('student', function($query){
+                            return $query->where('year', 'Q');
+                        })->count();
+
+        return $stats;
     }
 }

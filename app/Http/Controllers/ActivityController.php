@@ -89,8 +89,8 @@ class ActivityController extends Controller
             'activity_id' => $activity->id,
             'label' => $request['label'],
             'fine' => $request['fine'],
-            'open' => date('Y-m-d', $activity->starts->timestamp). " " . $request['open'],
-            'close' => date('Y-m-d', $activity->starts->timestamp). " " . $request['close']
+            'open' => date('Y-m-d', $activity->starts->timestamp). " " . $request['open'] . ":00",
+            'close' => date('Y-m-d', $activity->starts->timestamp). " " . $request['close'] . ":00"
         ]);
 
         return redirect()->back();

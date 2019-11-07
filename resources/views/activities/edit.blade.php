@@ -114,8 +114,8 @@
                 @foreach($activity->attScheds as $attSched)
                 <tr>
                     <td>{{$attSched->label}}</td>
-                    <td>{{$attSched->open}}</td>
-                    <td>{{$attSched->close}}</td>
+                    <td>{{$attSched->open->format('D, M d, Y g:i A')}}</td>
+                    <td>{{$attSched->close->format('D, M d, Y g:i A')}}</td>
                     <td>{{number_format($attSched->fine,2)}}</td>
                     <td>
                         {{-- <a href='{{url("/activities/att-sched/$attSched->id/delete")}}'
