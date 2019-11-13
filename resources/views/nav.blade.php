@@ -25,11 +25,15 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="navbar-text">
-                    User: {{auth()->user()->name}}
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('/logout')}}">[Logout]</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      User: {{auth()->user()->name}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="userDropdown">
+                      <a class="dropdown-item" href="{{url('/change-password')}}">Change Password</a>
+                      <hr>
+                      <a class="dropdown-item" href="{{url('/logout')}}">Logout</a>
+                    </div>
                 </li>
             </ul>
         </div>

@@ -43,4 +43,23 @@ class SiteController extends Controller
             return redirect('/');
 
     }
+
+    public function changePasswordForm() {
+        return view('change-password');
+    }
+
+    public function changePassword(Request $request) {
+        $this->validate($request, [
+            'current_password'=>'required',
+            'new_password'=>'required|confirmed',
+        ]);
+        $user = auth()->user();
+        if(\Hash::check($request['current_password'], $user->password) ){
+            $user->password = bcrypt($request['new_password']);
+            $user->save();
+            return redirect('/home')->with('Info','Your password has been changed.');
+        }else {
+            return redirect()->back()->with('Error','Invalid current password.');
+        }
+    }
 }

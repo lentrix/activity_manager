@@ -31,4 +31,8 @@ class Student extends Model
                     ->where('semester_id', Semester::getActive()->id)
                     ->first();
     }
+
+    public function getFullNameAttribute() {
+        return $this->lname . ", " . $this->fname;
+    }
 }

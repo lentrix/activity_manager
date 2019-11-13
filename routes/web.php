@@ -42,5 +42,11 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::get('/qrcodes', 'QrCodeController@index');
     Route::post('/qrcodes', 'QrCodeController@index');
+
+    Route::patch('/change-password', 'SiteController@changePassword');
+    Route::get('/change-password', 'SiteController@changePasswordForm');
+
+    Route::post('/att-check/{attCheck}/validate', 'AttCheckController@validateAttCheck');
+    Route::get('/att-check/{attCheck}', 'AttCheckController@show');
 });
 

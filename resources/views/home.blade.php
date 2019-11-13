@@ -4,6 +4,8 @@
 
 <h1>Dashboard</h1>
 
+@include('messages')
+
 <div class="row">
     <div class="col-md-4">
         <div class="panel panel-default">

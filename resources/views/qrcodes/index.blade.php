@@ -51,11 +51,11 @@
         @foreach($list as $item)
 
         <div class="qrcode">
-            {!! \QrCode::size(200)
+            {!! \QrCode::size(130)
                 ->backgroundColor(230,250,255)
                 ->generate("$item->id | $item->lname, $item->fname"); !!}
-            <div class="center small">
-                {{$item->lname}}, {{$item->fname}}
+            <div class="center extra-small">
+                [{{$item->id}}] {{$item->lname}}
             </div>
         </div>
 

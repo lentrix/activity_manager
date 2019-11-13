@@ -4,6 +4,8 @@
 
 <h1>Student View</h1>
 
+@include('messages')
+
 <div class="row">
 
     <div class="col-lg-3">
@@ -70,6 +72,7 @@
                     <th>Check Time</th>
                     <th>Checked by</th>
                     <th>Fines</th>
+                    <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
@@ -82,6 +85,11 @@
                     <td>{{$attCheck->check_time->format('D, M d, Y g:i A')}}</td>
                     <td>{{$attCheck->user->username}}</td>
                     <td>{{$attSched->fine}}</td>
+                    <td>
+                        <a href='{{url("/att-check/$attCheck->id")}}' class="btn btn-secondary btn-sm">
+                            <i class="fa fa-folder-open"></i>
+                        </a>
+                    </td>
                 </tr>
                     <?php $total += $attSched->fine; ?>
                 @endforeach
