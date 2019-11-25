@@ -60,7 +60,18 @@ class StudSem extends Model
     public static function stats() {
         $stats = [];
 
-        $stats['total'] = static::where('semester_id', Semester::getActive()->id)->count();
+        if(!$activeSem = Semester::getActive()) {
+            return [
+                'total'=>0,
+                '1'=>0,
+                '2'=>0,
+                '3'=>0,
+                '4'=>0,
+                'Q'=>0,
+            ];
+        }
+
+        $stats['total'] = static::where('semester_id', $activeSem->id)->count();
         $levels = ['1','2','3','4','Q'];
 
         $stats['1'] = static::where('semester_id', Semester::getActive()->id)

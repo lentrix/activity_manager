@@ -93,12 +93,18 @@ class ActivityController extends Controller
             'close' => date('Y-m-d', $activity->starts->timestamp). " " . $request['close'] . ":00"
         ]);
 
+        \App\Log::add("Added checking schedule {$request['label']} on $activity->title");
+
         return redirect()->back();
     }
 
     public function removeChecking(Request $request) {
         $attSched = AttSched::find($request['sched_id']);
+        $title = $attSched->label;
         $attSched->delete();
+
+        \App\Log::add("Removed checking schedule $title on {$attSched->activity->title}");
+
         return redirect()->back()->with('Error', 'Removed a checking Schedule');
     }
 }

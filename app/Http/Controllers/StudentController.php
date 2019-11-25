@@ -51,4 +51,21 @@ class StudentController extends Controller
     public function view(Student $student) {
         return view('students.view', compact('student'));
     }
+
+    public function create() {
+        return view('students.create');
+    }
+
+    public function store(Request $request) {
+        $this->validate($request,[
+            'lname' => 'required',
+            'fname' => 'required',
+            'program' => 'required',
+            'year' => 'required',
+        ]);
+
+        $stud = Student::create($request->all());
+
+        return redirect("/students/$stud->id")->with('Info','New student has been created.');
+    }
 }

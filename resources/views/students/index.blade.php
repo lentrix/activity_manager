@@ -13,7 +13,7 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            {{Form::open(['url'=>'/students', 'method'=>'post'])}}
+            {{Form::open(['url'=>'/students/search', 'method'=>'post'])}}
             <div class="modal-body">
                 <div class="form-group">
                     {{Form::label('key','Search Keyword')}}
@@ -123,6 +123,10 @@
                 <button class="btn btn-secondary" type='button' data-toggle='modal' data-target='#modalimport'>
                     <i class="fa fa-file-import"></i> Import..
                 </button>
+
+                <a href="{{url('/students/create')}}" class="btn btn-secondary">
+                    <i class="fa fa-plus"></i> Add Student
+                </a>
             </div>
         </div>
     </div>

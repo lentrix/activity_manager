@@ -6,6 +6,12 @@
 
 @include('messages')
 
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/students')}}">Students</a></li>
+    <li class="breadcrumb-item active">Student View</li>
+</ul>
+
 <div class="row">
 
     <div class="col-lg-3">

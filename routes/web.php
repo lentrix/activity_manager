@@ -18,9 +18,11 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/logout', 'SiteController@logout');
     Route::get('/home', 'SiteController@home')->name('home');
 
+    Route::post('/students/search', 'StudentController@search');
+    Route::get('/students/create', 'StudentController@create');
     Route::get('/students/{student}', 'StudentController@view');
     Route::get('/students', 'StudentController@index');
-    Route::post('/students', 'StudentController@search');
+    Route::post('/students', 'StudentController@store');
     Route::post('/students/import', 'StudentController@import');
     Route::get('/students/qrcode/{student}', 'StudentController@qrcode');
 
@@ -48,5 +50,9 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::post('/att-check/{attCheck}/validate', 'AttCheckController@validateAttCheck');
     Route::get('/att-check/{attCheck}', 'AttCheckController@show');
+
+    Route::get('/att-sched/{attSched}/edit', 'AttSchedController@edit');
+    Route::patch('/att-sched/{attSched}', 'AttSchedController@update');
+    Route::get('/att-sched/{attSched}', 'AttSchedController@show');
 });
 

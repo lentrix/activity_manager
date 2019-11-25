@@ -118,19 +118,21 @@
                     <td>{{$attSched->close->format('D, M d, Y g:i A')}}</td>
                     <td>{{number_format($attSched->fine,2)}}</td>
                     <td>
-                        {{-- <a href='{{url("/activities/att-sched/$attSched->id/delete")}}'
-                                    class="btn btn-danger btn-sm">
-                            <i class="fa fa-times"></i>
-                        </a> --}}
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Action
+                            </a>
 
-                        <button class="btn btn-danger btn-sm delete-sched"
-                                title="Delete checking schedule"
-                                data-toggle="modal"
-                                data-target="#modaldelete"
-                                data-content="{{$attSched->label}}"
-                                data-schedId="{{$attSched->id}}">
-                            <i class="fa fa-trash-alt"></i>
-                        </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href='{{url("/att-sched/$attSched->id")}}'>View</a>
+                                <a class="dropdown-item" href='{{url("/att-sched/$attSched->id/edit")}}'>Edit</a>
+                                <a class="dropdown-item delete-sched" href="#"
+                                    data-toggle="modal"
+                                    data-target="#modaldelete"
+                                    data-content="{{$attSched->label}}"
+                                    data-schedId="{{$attSched->id}}">Delete</a>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
